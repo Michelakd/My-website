@@ -1,17 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greeting Example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="ISO-8859-1">
+<title>Button Moving</title>
+<style>
+    #movingButton {
+        position: absolute;
+        left: 0;
+        top: 1000000;
+    }
+</style>
 </head>
 <body>
+
+<button id="movingButton">Click me!</button>
+
+
+<form action="submit_form.php" method="post">
+
+ <!-- Textfeld für den Namen -->
+ <label for="name">Name:</label><br>
+ <input type="text" id="name" name="name"><br>
+
+ <!-- Passwortfeld -->
+ <label for="pwd">Passwort:</label><br>
+ <input type="password" id="pwd" name="password"><br>
+
+ <!-- Auswahlbox -->
+ <label for="department">Abteilung:</label><br>
+ <select id="department" name="department">
+     <option value="verkauf">Verkauf</option>
+     <option value="marketing">Marketing</option>
+     <option value="entwicklung">Entwicklung</option>
+ </select><br>
+
+ <!-- Radio Buttons -->
+ <p>Geschlecht:</p>
+ <input type="radio" id="male" name="gender" value="male">
+ <label for="male">Männlich</label><br>
+ <input type="radio" id="female" name="gender" value="female">
+ <label for="female">Weiblich</label><br>
+
+ <!-- Checkboxen -->
+ <p>Newsletter abonnieren?</p>
+ <input type="checkbox" id="subscribe" name="subscribe" value="yes">
+ <label for="subscribe">Ja, bitte</label><br>
+ <br>
     <script>
-        let name = prompt("What is your name?");
-
-        let greeting = "Hello, " + name + "!";
-
-        alert(greeting);
+    const button = document.getElementById('movingButton');
+    
+    button.addEventListener('click', () => {
+        const newX = Math.random() * (window.innerWidth - button.offsetWidth);
+        const newY = Math.random() * (window.innerHeight - button.offsetHeight);
+        
+        button.style.left = newX + 'px';
+        button.style.top = newY + 'px';
+    });
     </script>
+
+</form>
 </body>
 </html>
